@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  {{ .Release.Name }}-configmap
+data:
+  myvalue: "Hello World"
+  values_from_values: {{ .Values.fruit }}
+  values_from_chart: {{ .Chart.Name }}
+  values_from_subchart: {{ .Subcharts.sample.Values.fruit }}
+  files: {{ .Files.Get "files/new.txt" }}
+  files1: {{ .Files.Glob "files/*.txt" }}
+  version: {{ .Capabilities.KubeVersion.Major }}
+  file_name: {{ .Template.Name }}
+
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap-1
+data:
+  {{- (.Files.Glob "files/*").AsConfig | nindent 2 }}
