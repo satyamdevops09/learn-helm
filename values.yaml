@@ -4,7 +4,7 @@ favorite:
   food: pizza
 
 configmap:
-  enabled: true
+  enabled: false
 
 pizzaToppings:
   - mushrooms
