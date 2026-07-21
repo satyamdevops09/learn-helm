@@ -27,11 +27,11 @@ data:
    name: {{ .Release.Name }}-configmap-2
  data:
    myvalue: "Hello World"
-    {{- with .Values.favorite }}
+   {{- with .Values.favorite }}
    drink: {{ .drink | default "tea" | quote }}
    food: {{ .food | upper | quote }}
-   release: {{ $.Release.Name }}
-    {{- end }}
+   release: {{ $.Release.Name | quote }}
+   {{- end }}
 ---
 # apiVersion: v1
 # kind: ConfigMap
