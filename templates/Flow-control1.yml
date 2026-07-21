@@ -45,3 +45,15 @@ data:
     {{- range .Values.pizzaToppings }}
     - {{ . | title | quote }}
     {{- end }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap-4
+data:
+  myvalue: "Hello World"
+  toppings: |-
+    {{- range $key, $value := .Values.favorite }}
+    {{ $key | title | quote }}={{ $value }}
+    {{- end }}
