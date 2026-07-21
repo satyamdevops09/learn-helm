@@ -8,19 +8,20 @@
 #   {{- end }}
 #
 #---
-#apiVersion: v1
-#kind: ConfigMap
-#metadata:
-#  name: {{ .Release.Name }}-configmap-1
-#data:
-#  myvalue: "Hello World"
-#  drink: {{ .Values.favorite.drink | default "tea" | quote }}
-#  food: {{ .Values.favorite.food | upper | quote }}
-#   {{- if eq .Values.favorite.drink "coffee" }}
-#  sugar: "true"
-#   {{- end }}
-#  mobile: "900"
-#---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap-1
+data:
+  myvalue: "Hello World"
+  drink: {{ .Values.favorite.drink | default "tea" | quote }}
+  food: {{ .Values.favorite.food | upper | quote }}
+  {{ if eq .Values.favorite.drink "coffee" }}mug: "true"{{ end }}
+   {{- if eq .Values.favorite.drink "coffee" }}
+  sugar: "true"
+   {{- end }}
+  mobile: "900"
+---
  apiVersion: v1
  kind: ConfigMap
  metadata:
