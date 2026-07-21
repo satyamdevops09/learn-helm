@@ -16,9 +16,9 @@ data:
   myvalue: "Hello World"
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
-  {{- if eq .Values.favorite.drink "coffee" }}
+   {{- if eq .Values.favorite.drink "coffee" }}
   sugar: "true"
-  {{- end }}
+   {{- end }}
   mobile: "900"
 ---
  apiVersion: v1
